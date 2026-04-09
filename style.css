@@ -28,6 +28,34 @@
   --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* ===== Dark Mode ===== */
+[data-theme="dark"] {
+  --color-bg: #1a1a2e;
+  --color-surface: #16213e;
+  --color-border: #2a2a4a;
+  --color-text: #e8e6e3;
+  --color-text-secondary: #a09b94;
+  --color-accent: #f0825c;
+  --color-accent-hover: #f59a7a;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.35);
+}
+
+[data-theme="dark"] body {
+  background-image: radial-gradient(ellipse at 10% 0%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
+                    radial-gradient(ellipse at 90% 100%, rgba(232, 108, 58, 0.06) 0%, transparent 50%);
+}
+
+[data-theme="dark"] .site-header {
+  background: rgba(26, 26, 46, 0.85);
+}
+
+[data-theme="dark"] .project-card,
+[data-theme="dark"] .about-links a {
+  background: var(--color-surface);
+}
+
 html {
   font-size: 16px;
   scroll-behavior: smooth;
@@ -510,6 +538,54 @@ main {
   .hero h1 {
     font-size: 1.75rem;
   }
+}
+
+/* ===== Profile Photo ===== */
+.about-hero {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.profile-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  border: 3px solid var(--color-border);
+  box-shadow: var(--shadow-md);
+  flex-shrink: 0;
+}
+
+@media (max-width: 480px) {
+  .about-hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .profile-photo {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+/* ===== Dark Mode Toggle ===== */
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: 99px;
+  padding: 0.35rem 0.6rem;
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+  transition: all var(--transition);
+  color: var(--color-text-secondary);
+}
+
+.theme-toggle:hover {
+  border-color: var(--color-accent);
+  background: var(--color-surface);
 }
 
 /* ===== Language visibility helpers ===== */
