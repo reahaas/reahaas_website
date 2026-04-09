@@ -16,6 +16,7 @@
         <a href="/" lang="he" class="${page === 'projects' ? 'active' : ''}">פרויקטים</a>
         <a href="/about/" lang="en" class="${page === 'about' ? 'active' : ''}">About</a>
         <a href="/about/" lang="he" class="${page === 'about' ? 'active' : ''}">אודות</a>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
         <div class="lang-toggle">
           <button id="btn-en" class="active" onclick="setLang('en')">EN</button>
           <button id="btn-he" onclick="setLang('he')">עב</button>
@@ -51,4 +52,37 @@
   // Restore saved preference
   const saved = localStorage.getItem('lang');
   if (saved) setLang(saved);
+
+  // ── Dark Mode Toggle ──
+  function setTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    const btn = document.getElementById('theme-toggle');
+    if (btn) btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+    localStorage.setItem('theme', theme);
+  }
+
+  const themeBtn = document.getElementById('theme-toggle');
+  if (themeBtn) {
+    themeBtn.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme');
+      setTheme(current === 'dark' ? 'light' : 'dark');
+    });
+  }
+
+  // Restore saved theme (respect system preference as fallback)
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme) {
+    setTheme(savedTheme);
+  } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    setTheme('dark');
+  }
+
+  // ── Analytics (GoatCounter — free, privacy-friendly, no cookies) ──
+  if (!window.location.hostname.includes('localhost')) {
+    const gc = document.createElement('script');
+    gc.async = true;
+    gc.dataset.goatcounter = 'https://reahaas.goatcounter.com/count';
+    gc.src = '//gc.zgo.at/count.js';
+    document.body.appendChild(gc);
+  }
 })();
