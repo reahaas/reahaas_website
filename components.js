@@ -29,7 +29,7 @@
   footer.className = 'site-footer';
   footer.innerHTML = `
     <span lang="en">&copy; 2026 Rea Haas. Built with HTML &amp; CSS.</span>
-    <span lang="he">&copy; 2026 ריאה האס. נבנה עם HTML &amp; CSS.</span>`;
+    <span lang="he">&copy; 2026 רע הס. נבנה עם HTML &amp; CSS.</span>`;
   document.body.appendChild(footer);
 
   // ── Language Toggle ──
