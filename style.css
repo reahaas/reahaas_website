@@ -562,11 +562,16 @@ main {
   .about-hero {
     flex-direction: column;
     text-align: center;
+    align-items: center;
   }
 
   .profile-photo {
-    width: 100px;
-    height: 100px;
+    width: 90px;
+    height: 90px;
+  }
+
+  .about-links {
+    justify-content: center;
   }
 }
 
